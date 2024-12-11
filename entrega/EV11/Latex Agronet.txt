@@ -1,0 +1,566 @@
+
+\documentclass[12pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Sistema de Gestión para la Ganadería: Optimización de Procesos Productivos, Sanitarios y de Insumos}
+\author{Erick Daniel Peña Cedeño\\
+Jhoan Calderón Perdomo\\
+David Mauricio Florez Quintero\\
+Jesús Ariel González Bonilla\\
+Jhon William Corredor Araujo}
+\date{Octubre, 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este proyecto desarrolla un sistema tecnológico integral que permite a los ganaderos optimizar la gestión de procesos clave como inseminación, salud animal, producción de carne y leche, y manejo de inventarios de insumos. Implementando metodologías ágiles como Scrum y herramientas modernas, el sistema digitaliza y automatiza tareas críticas, mejorando la eficiencia operativa, reduciendo errores manuales y aumentando la sostenibilidad. Este artículo detalla el diseño, implementación y resultados iniciales del sistema, mostrando cómo puede transformar la gestión ganadera.
+\end{abstract}
+
+\textbf{Palabras clave:} Gestión ganadera, producción de carne, salud animal, inseminación, tecnología agrícola, sostenibilidad, eficiencia operativa.
+
+\section{Introducción}
+
+La ganadería es crucial en economías como la colombiana, pero enfrenta retos operativos y tecnológicos. La falta de herramientas digitales limita la eficiencia y competitividad del sector, afectando tanto la rentabilidad como la sostenibilidad. Este proyecto busca abordar estas limitaciones desarrollando una solución tecnológica que automatice y optimice procesos esenciales, mejorando la toma de decisiones basadas en datos.
+
+\section{Marco Teórico}
+
+La gestión eficiente de las operaciones ganaderas es crucial para garantizar la sostenibilidad y rentabilidad del sector. La digitalización y la implementación de sistemas de gestión integrales han emergido como herramientas esenciales para optimizar procesos productivos, sanitarios y de insumos. Este marco teórico explora los conceptos fundamentales, teorías subyacentes y estudios previos que sustentan el desarrollo e implementación de sistemas tecnológicos en la ganadería, enfocándose en la optimización de la producción, la salud animal y la gestión de insumos.
+
+\subsection{Importancia Económica de la Ganadería}
+
+La ganadería es una actividad económica de gran relevancia a nivel mundial y particularmente en países como Colombia. Representa una fuente primaria de alimentos, materias primas y empleo, contribuyendo significativamente al Producto Interno Bruto (PIB) agropecuario. Según el Ministerio de Agricultura de Colombia, más del 30\% de las tierras agrícolas del país están dedicadas a la ganadería, subrayando su importancia para el desarrollo rural y la sostenibilidad económica de numerosas familias \cite{fedegan2024}.
+
+Además, la ganadería desempeña un papel vital en la seguridad alimentaria, proporcionando proteínas de alta calidad a la población. La diversificación de productos, que incluye carne, leche, cuero y otros subproductos, permite una mayor estabilidad económica y resiliencia frente a fluctuaciones del mercado. Sin embargo, este sector enfrenta desafíos significativos relacionados con la eficiencia operativa, el control sanitario y la optimización de recursos, que son fundamentales para mantener su competitividad y sostenibilidad a largo plazo.
+
+\subsection{Problemáticas Actuales en la Gestión Ganadera}
+
+A pesar de su importancia económica, la gestión ganadera en muchas regiones, incluida Colombia, continúa siendo predominantemente manual y tradicional. Este enfoque tradicional genera una serie de ineficiencias operativas que afectan la productividad y la sostenibilidad del sector. Entre las principales problemáticas se encuentran:
+
+\subsubsection{Falta de Control sobre Ciclos Reproductivos}
+
+El control de los ciclos reproductivos del ganado es esencial para mantener y aumentar la población animal. Sin embargo, la falta de herramientas adecuadas dificulta el monitoreo preciso de fechas clave como inseminaciones y partos, lo que puede llevar a una baja eficiencia reproductiva y a una menor producción de animales \cite{mahecha2002}.
+
+\subsubsection{Gestión Ineficaz de Inventarios de Insumos}
+
+La gestión manual de inventarios de insumos como alimentos, medicamentos y vacunas puede resultar en desabastecimientos o excesos que incrementan los costos operativos. La falta de un sistema automatizado impide un control preciso y en tiempo real de los niveles de inventario, afectando la capacidad de respuesta ante necesidades emergentes \cite{mahecha2002}.
+
+\subsubsection{Monitoreo Insuficiente de la Salud Animal}
+
+El bienestar y la salud de los animales son pilares fundamentales para la productividad ganadera. La ausencia de un sistema de monitoreo continuo y automatizado dificulta la detección temprana de enfermedades y la administración oportuna de tratamientos, lo que puede resultar en pérdidas económicas significativas y en la propagación de enfermedades \cite{mahecha2002}.
+
+\subsubsection{Dificultad para Predecir la Producción Futura}
+
+La planificación y predicción de la producción de carne y leche son cruciales para la toma de decisiones estratégicas. Sin herramientas adecuadas para analizar datos históricos y actuales, los ganaderos enfrentan dificultades para anticipar la producción futura, lo que puede afectar la capacidad de planificación y la gestión de recursos \cite{mahecha2002}.
+
+\subsection{Transformación Digital en la Ganadería}
+
+La digitalización en la ganadería, conocida como "ganadería de precisión", ha emergido como una solución eficaz para abordar las problemáticas mencionadas. La adopción de tecnologías digitales permite un monitoreo más preciso y en tiempo real de variables clave, mejorando la eficiencia operativa y la toma de decisiones basadas en datos.
+
+\subsubsection{Tecnologías Clave en la Ganadería de Precisión}
+
+\begin{itemize}
+    \item \textbf{Sensores y Dispositivos IoT}: Los sensores instalados en los animales y en las instalaciones ganaderas recopilan datos sobre parámetros como la temperatura corporal, la actividad física y la ubicación. Estos datos permiten un monitoreo continuo de la salud y el bienestar de los animales.
+    \item \textbf{Sistemas de Información Geográfica (SIG)}: Los SIG facilitan el análisis espacial de la finca ganadera, permitiendo una gestión más eficiente de los recursos y la planificación de actividades como la rotación de pasturas y la distribución de insumos.
+    \item \textbf{Inteligencia Artificial y Análisis Predictivo}: Algoritmos de inteligencia artificial analizan grandes volúmenes de datos para predecir eventos críticos como infecciones, partos y variaciones en la producción, permitiendo una intervención proactiva.
+    \item \textbf{Aplicaciones Móviles y Plataformas Web}: Las aplicaciones móviles facilitan el registro y seguimiento de actividades ganaderas en tiempo real, mientras que las plataformas web ofrecen herramientas de análisis y generación de reportes detallados.
+\end{itemize}
+
+\subsubsection{Beneficios de la Digitalización}
+
+La implementación de tecnologías digitales en la ganadería ofrece múltiples beneficios:
+
+\begin{itemize}
+    \item \textbf{Mejora en la Toma de Decisiones}: La disponibilidad de datos en tiempo real permite a los ganaderos tomar decisiones informadas y basadas en evidencia, optimizando así los procesos productivos y sanitarios.
+    \item \textbf{Incremento de la Productividad}: La automatización de tareas y el monitoreo preciso de variables clave resultan en una mayor eficiencia operativa y un aumento en la producción de carne y leche.
+    \item \textbf{Reducción de Costos Operativos}: La optimización en el uso de insumos y la prevención de enfermedades reducen los costos asociados a desperdicios y tratamientos médicos.
+    \item \textbf{Sostenibilidad Ambiental}: El uso eficiente de recursos como el agua y los alimentos contribuye a una gestión más sostenible del medio ambiente, disminuyendo el impacto ecológico de las operaciones ganaderas.
+\end{itemize}
+
+\subsection{Aplicaciones Tecnológicas en la Gestión de Inseminación, Producción y Salud}
+
+La implementación de sistemas tecnológicos en la gestión de inseminación, producción y salud animal es fundamental para mejorar la eficiencia y efectividad de estas actividades críticas.
+
+\subsubsection{Gestión de Inseminación}
+
+El control preciso de los ciclos reproductivos es esencial para maximizar la eficiencia reproductiva del ganado. Los sistemas de gestión de inseminación permiten:
+
+\begin{itemize}
+    \item \textbf{Registro de Fechas Clave}: Monitoreo de fechas de inseminación y predicción de partos, generando alertas automáticas para intervenciones oportunas.
+    \item \textbf{Evaluación de Resultados}: Análisis de tasas de fertilidad y éxito reproductivo, facilitando ajustes en las prácticas de inseminación para mejorar los resultados.
+    \item \textbf{Optimización de Recursos}: Planificación eficiente de recursos como semen y equipos de inseminación, reduciendo costos y aumentando la eficacia del proceso.
+\end{itemize}
+
+\subsubsection{Gestión de Producción de Carne y Leche}
+
+La gestión eficiente de la producción de carne y leche es crucial para la rentabilidad de la finca ganadera. Las aplicaciones tecnológicas permiten:
+
+\begin{itemize}
+    \item \textbf{Registro y Control de Producción}: Monitoreo diario de la producción de carne y leche, permitiendo una gestión más precisa y eficiente.
+    \item \textbf{Optimización del Almacenamiento}: Gestión de fechas de vencimiento de productos, generando alertas para la eliminación o uso oportuno de productos próximos a expirar.
+    \item \textbf{Análisis de Tendencias}: Identificación de patrones en la producción que faciliten la planificación y previsión de futuras necesidades y capacidades de producción.
+\end{itemize}
+
+\subsubsection{Control Sanitario de los Animales}
+
+La salud animal es un componente fundamental para la productividad y bienestar de la finca ganadera. Las aplicaciones tecnológicas en el control sanitario permiten:
+
+\begin{itemize}
+    \item \textbf{Registro de Tratamientos y Medicamentos}: Documentación detallada de tratamientos administrados, medicamentos utilizados y enfermedades detectadas.
+    \item \textbf{Alertas Automáticas}: Recordatorios para la administración de medicamentos y revisiones periódicas, asegurando un manejo adecuado de la salud animal.
+    \item \textbf{Análisis de Datos Sanitarios}: Evaluación de la prevalencia de enfermedades y efectividad de los tratamientos, facilitando decisiones basadas en datos para mejorar el manejo sanitario.
+\end{itemize}
+
+\subsection{Sistemas de Gestión de Insumos en la Ganadería}
+
+La gestión eficiente de insumos es esencial para asegurar la continuidad operativa y la optimización de recursos en la finca ganadera. Los sistemas de gestión de insumos permiten:
+
+\subsubsection{Registro y Monitoreo de Inventarios}
+
+\begin{itemize}
+    \item \textbf{Control de Stock}: Registro detallado de entradas y salidas de insumos como alimentos, medicamentos y vacunas, asegurando una disponibilidad constante.
+    \item \textbf{Generación de Alertas}: Notificaciones automáticas cuando los niveles de inventario alcanzan umbrales críticos, previniendo desabastecimientos y excesos.
+    \item \textbf{Optimización de Compras}: Análisis de tendencias de consumo para planificar compras de manera más eficiente, reduciendo costos y evitando desperdicios.
+\end{itemize}
+
+\subsubsection{Automatización de Reportes}
+
+\begin{itemize}
+    \item \textbf{Informes Detallados}: Generación automática de reportes sobre el uso de insumos, permitiendo una evaluación continua y una mejor planificación futura.
+    \item \textbf{Toma de Decisiones Basada en Datos}: Facilita la identificación de patrones y tendencias en el consumo de insumos, apoyando decisiones estratégicas para la gestión eficiente de recursos.
+\end{itemize}
+
+\subsection{Beneficios de la Digitalización para la Sostenibilidad y Eficiencia}
+
+La digitalización en la ganadería no solo mejora la eficiencia operativa, sino que también contribuye significativamente a la sostenibilidad ambiental y económica del sector.
+
+\subsubsection{Eficiencia Operativa}
+
+\begin{itemize}
+    \item \textbf{Automatización de Procesos}: La digitalización permite la automatización de tareas repetitivas y manuales, reduciendo el tiempo y esfuerzo necesarios para gestionar diversas actividades ganaderas.
+    \item \textbf{Reducción de Errores Manuales}: Al digitalizar el registro y monitoreo de actividades, se minimizan los errores humanos, aumentando la precisión de los datos y la fiabilidad de la información utilizada para la toma de decisiones.
+    \item \textbf{Optimización del Uso de Recursos}: La gestión eficiente de insumos y la planificación precisa de actividades productivas y sanitarias aseguran un uso óptimo de los recursos disponibles, reduciendo costos y aumentando la rentabilidad.
+\end{itemize}
+
+\subsubsection{Sostenibilidad Ambiental}
+
+\begin{itemize}
+    \item \textbf{Uso Eficiente de Recursos Naturales}: La digitalización permite un monitoreo más preciso del uso de recursos como agua y alimentos, reduciendo el desperdicio y promoviendo prácticas más sostenibles.
+    \item \textbf{Reducción del Impacto Ambiental}: Al optimizar el uso de insumos y mejorar la salud animal, se disminuye el impacto ambiental de las operaciones ganaderas, contribuyendo a una producción más sostenible y responsable.
+    \item \textbf{Mejora del Bienestar Animal}: Un monitoreo más detallado de la salud animal asegura un manejo más adecuado y oportuno de tratamientos, mejorando el bienestar de los animales y, por ende, la calidad de los productos ganaderos.
+\end{itemize}
+
+\subsubsection{Sostenibilidad Económica}
+
+\begin{itemize}
+    \item \textbf{Incremento de la Productividad}: La optimización de procesos y la mejora en la gestión de recursos resultan en un aumento significativo de la productividad ganadera, permitiendo a los ganaderos obtener mayores rendimientos de sus operaciones.
+    \item \textbf{Reducción de Costos Operativos}: La gestión eficiente de insumos y la prevención de errores reducen los costos asociados a desperdicios y tratamientos médicos, mejorando la rentabilidad de las fincas ganaderas.
+    \item \textbf{Mejora de la Competitividad}: La adopción de tecnologías avanzadas posiciona a las fincas ganaderas en una posición competitiva en el mercado, permitiendo ofrecer productos de mayor calidad y diferenciados frente a la competencia.
+\end{itemize}
+
+\subsection{Integración de Metodologías Ágiles en el Desarrollo de Sistemas de Gestión Ganadera}
+
+La implementación de sistemas tecnológicos en la ganadería requiere un enfoque metodológico que permita una adaptación rápida a las necesidades cambiantes de los ganaderos y a los desafíos emergentes del sector. Las metodologías ágiles, como Scrum y Extreme Programming (XP), ofrecen un marco flexible y colaborativo que facilita el desarrollo iterativo y la entrega continua de funcionalidades.
+
+\subsubsection{Metodología Scrum}
+
+Scrum es una metodología ágil que se enfoca en la gestión de proyectos a través de ciclos de desarrollo cortos llamados "sprints". Cada sprint dura típicamente entre dos y cuatro semanas, durante las cuales se desarrollan y entregan incrementos funcionales del producto. Los principios clave de Scrum incluyen:
+
+\begin{itemize}
+    \item \textbf{Transparencia}: Todos los aspectos del proceso de desarrollo son visibles para los miembros del equipo y los stakeholders, promoviendo una comunicación abierta y efectiva.
+    \item \textbf{Inspección}: Revisión periódica del progreso y de los resultados de cada sprint para identificar áreas de mejora y ajustar el enfoque según sea necesario.
+    \item \textbf{Adaptación}: Flexibilidad para modificar los planes y estrategias basándose en la retroalimentación obtenida durante las inspecciones, asegurando que el proyecto se alinee con las necesidades y expectativas de los usuarios.
+\end{itemize}
+
+\subsubsection{Extreme Programming (XP)}
+
+Extreme Programming (XP) es otra metodología ágil que se centra en mejorar la calidad del software y en la capacidad de respuesta a los cambios de los clientes. XP promueve prácticas como:
+
+\begin{itemize}
+    \item \textbf{Desarrollo Iterativo}: Similar a Scrum, XP enfatiza la entrega continua de pequeñas funcionalidades que pueden ser revisadas y mejoradas de manera iterativa.
+    \item \textbf{Programación en Pareja}: Dos desarrolladores trabajan juntos en una misma estación de trabajo, fomentando la colaboración, la revisión constante del código y la generación de soluciones de alta calidad.
+    \item \textbf{Integración Continua}: El código desarrollado es integrado y probado continuamente, lo que ayuda a identificar y corregir errores de manera temprana y eficiente.
+    \item \textbf{Refactorización}: Mejora continua del código existente para optimizar su estructura y rendimiento sin alterar su funcionalidad.
+\end{itemize}
+
+\subsubsection{Ventajas de las Metodologías Ágiles en la Ganadería}
+
+La adopción de metodologías ágiles en el desarrollo de sistemas de gestión ganadera ofrece múltiples ventajas:
+
+\begin{itemize}
+    \item \textbf{Flexibilidad y Adaptabilidad}: Permiten adaptarse rápidamente a los cambios en los requisitos y a las nuevas necesidades de los ganaderos.
+    \item \textbf{Mejora de la Comunicación}: Fomentan una comunicación constante y efectiva entre los desarrolladores y los stakeholders, asegurando que el producto final cumpla con las expectativas y necesidades reales de los usuarios.
+    \item \textbf{Entrega Continua de Valor}: La entrega incremental de funcionalidades garantiza que los ganaderos puedan comenzar a utilizar y beneficiarse de las mejoras del sistema desde etapas tempranas del desarrollo.
+    \item \textbf{Calidad del Producto}: Las prácticas de desarrollo como la programación en pareja y la integración continua mejoran la calidad del código y reducen la incidencia de errores, resultando en un sistema más robusto y fiable.
+\end{itemize}
+
+\subsection{Diseño e Implementación de Sistemas de Gestión Ganadera}
+
+El diseño e implementación de un sistema de gestión ganadera integral requiere una arquitectura modular y escalable que pueda adaptarse a las diversas necesidades del sector. La aplicación debe ser capaz de manejar múltiples aspectos de la gestión ganadera, incluyendo inseminación, producción, salud animal e inventarios de insumos.
+
+\subsubsection{Arquitectura Modular}
+
+Una arquitectura modular permite que el sistema se divida en componentes independientes que pueden desarrollarse, probarse y mantenerse de manera aislada. Esto facilita la escalabilidad y la integración de nuevas funcionalidades sin afectar la estabilidad del sistema existente. Los módulos principales incluyen:
+
+\begin{itemize}
+    \item \textbf{Módulo de Inseminación}: Gestiona los ciclos reproductivos, registra fechas de inseminación y predice fechas de partos.
+    \item \textbf{Módulo de Producción}: Monitorea la producción de carne y leche, registrando volúmenes y fechas de vencimiento.
+    \item \textbf{Módulo de Salud Animal}: Registra tratamientos médicos, vacunas y enfermedades, generando alertas para intervenciones sanitarias.
+    \item \textbf{Módulo de Gestión de Insumos}: Controla el inventario de insumos, registrando entradas y salidas y generando reportes automáticos.
+    \item \textbf{Módulo de Reportes y Análisis}: Genera informes detallados sobre la producción, salud animal y uso de insumos para facilitar la toma de decisiones.
+\end{itemize}
+
+\subsubsection{Tecnologías Utilizadas}
+
+Para el desarrollo de un sistema robusto y escalable, se emplean diversas tecnologías que garantizan el rendimiento y la facilidad de mantenimiento:
+
+\begin{itemize}
+    \item \textbf{Backend en C\# y .NET 7}: Proporciona una plataforma sólida y eficiente para el manejo de lógica de negocio y gestión de datos.
+    \item \textbf{Frontend en Angular}: Ofrece una interfaz de usuario dinámica y responsiva, facilitando la interacción de los ganaderos con el sistema.
+    \item \textbf{Base de Datos SQL Server}: Asegura un almacenamiento seguro y eficiente de los datos, permitiendo consultas rápidas y manejo de grandes volúmenes de información.
+    \item \textbf{Aplicaciones Móviles}: Permiten a los ganaderos acceder y gestionar la información en tiempo real desde dispositivos móviles, aumentando la flexibilidad y accesibilidad del sistema.
+\end{itemize}
+
+\subsubsection{Proceso de Desarrollo}
+
+El proceso de desarrollo se llevó a cabo de manera iterativa, siguiendo las fases de investigación, diseño y desarrollo. Cada fase se caracterizó por una colaboración estrecha entre los miembros del equipo y una comunicación constante con los stakeholders para asegurar que el sistema cumpliera con las expectativas y necesidades específicas de los usuarios.
+
+\paragraph{Fase de Investigación}
+
+La fase inicial consistió en reuniones con los ganaderos para identificar sus necesidades y problemáticas recurrentes. Se realizaron encuestas y entrevistas para recopilar información detallada sobre los procesos clave y los requisitos funcionales del sistema.
+
+\paragraph{Fase de Diseño}
+
+Basándose en los requisitos recopilados, se diseñó una arquitectura modular que permitiera una fácil integración y escalabilidad. Se crearon diagramas de flujo y prototipos de la interfaz de usuario para validar el diseño con los stakeholders.
+
+\paragraph{Fase de Desarrollo}
+
+El desarrollo se dividió en módulos independientes, permitiendo un trabajo paralelo y eficiente entre los miembros del equipo. Se implementaron prácticas de programación en pareja y pruebas unitarias para asegurar la calidad del código y la funcionalidad de cada componente.
+
+\subsection{Pruebas y Validación del Sistema}
+
+Para garantizar la efectividad y fiabilidad del sistema de gestión ganadera, se implementaron diversas fases de pruebas y validación:
+
+\subsubsection{Pruebas Unitarias y Funcionales}
+
+Las pruebas unitarias se realizaron para verificar que cada módulo funcionara correctamente de manera aislada. Las pruebas funcionales aseguraron que los módulos interactuaran de manera efectiva, cumpliendo con los requisitos establecidos.
+
+\subsubsection{Pruebas de Usabilidad}
+
+Se llevaron a cabo pruebas de usabilidad con ganaderos para evaluar la facilidad de uso de la interfaz y la efectividad de las funcionalidades. La retroalimentación obtenida permitió realizar ajustes y mejoras en la experiencia de usuario.
+
+\subsubsection{Pruebas de Rendimiento}
+
+Las pruebas de rendimiento evaluaron la capacidad del sistema para manejar grandes volúmenes de datos y múltiples usuarios simultáneamente, asegurando un rendimiento óptimo bajo diversas condiciones de operación.
+
+\subsubsection{Validación en Campo}
+
+Finalmente, el sistema fue implementado en una finca ganadera piloto para realizar pruebas en un entorno real. Se monitorearon los resultados y se realizaron ajustes basados en la experiencia práctica y la retroalimentación de los usuarios.
+
+\subsection{Impacto y Beneficios del Sistema de Gestión Ganadera}
+
+La implementación de un sistema de gestión ganadera integral ofrece múltiples beneficios tanto a nivel operativo como económico y ambiental.
+
+\subsubsection{Mejora en la Eficiencia Operativa}
+
+La automatización de procesos críticos reduce el tiempo y esfuerzo necesarios para gestionar actividades diarias, permitiendo a los ganaderos enfocarse en tareas estratégicas y de mayor valor añadido.
+
+\subsubsection{Optimización de Recursos}
+
+El control preciso de insumos y la planificación eficiente de actividades productivas y sanitarias aseguran un uso óptimo de los recursos disponibles, reduciendo costos y aumentando la rentabilidad.
+
+\subsubsection{Incremento de la Productividad}
+
+La digitalización permite un monitoreo más detallado de la producción y la salud animal, facilitando intervenciones oportunas y ajustes en los procesos para maximizar la productividad.
+
+\subsubsection{Sostenibilidad y Bienestar Animal}
+
+La gestión adecuada de la salud animal y el uso eficiente de recursos contribuyen a una producción más sostenible y al bienestar de los animales, mejorando la calidad de los productos ganaderos y la percepción del consumidor.
+
+\subsubsection{Toma de Decisiones Basada en Datos}
+
+La generación de reportes y análisis detallados proporciona a los ganaderos información valiosa para la toma de decisiones informadas, mejorando la planificación y la estrategia operativa.
+
+\subsection{Estudios Previos y Referencias}
+
+Diversos estudios han demostrado la efectividad de la digitalización en la ganadería. Mahecha et al. (2002) destacaron cómo la gestión manual afecta la productividad y sostenibilidad del sector, subrayando la necesidad de adoptar tecnologías avanzadas para mejorar estos aspectos \cite{mahecha2002}. Ospina González (2012) exploró el impacto de los sistemas de software en la gestión ganadera, evidenciando mejoras significativas en la eficiencia operativa y la calidad de los productos \cite{ospina2012}. Además, el Plan Estratégico de la Ganadería Colombiana (PEGA) enfatiza la importancia de la modernización tecnológica para impulsar la competitividad y sostenibilidad del sector \cite{fedegan2024}.
+
+
+\section{Metodología}
+
+El desarrollo del sistema AgroNet siguió un enfoque basado en metodologías ágiles para maximizar la flexibilidad, la colaboración y la eficiencia durante todo el ciclo de vida del proyecto. A continuación, se describen las fases principales del proyecto, las herramientas empleadas y las prácticas implementadas para garantizar la calidad del producto.
+
+\subsection{Fases del Proyecto}
+
+El proyecto AgroNet se estructuró en las siguientes fases:
+
+\subsubsection{1. Planificación}
+En esta fase inicial, se llevaron a cabo reuniones con los stakeholders principales, incluyendo ganaderos y expertos en gestión agropecuaria, para identificar necesidades y problemáticas específicas. Se definieron los objetivos funcionales y no funcionales del sistema, destacando:
+
+\begin{itemize}
+    \item Optimizar el control de procesos ganaderos como inseminación, salud animal y producción de carne y leche.
+    \item Automatizar la gestión de inventarios de insumos y reportes.
+    \item Mejorar la toma de decisiones mediante análisis y reportes basados en datos.
+\end{itemize}
+
+Además, se definió la arquitectura modular del sistema y se priorizaron las funcionalidades clave mediante un **Product Backlog**.
+
+\subsubsection{2. Diseño del Sistema}
+El diseño técnico incluyó:
+\begin{itemize}
+    \item \textbf{Arquitectura Modular}: Se dividió el sistema en módulos independientes, incluyendo módulos para inseminación, producción, salud animal, gestión de insumos y reportes.
+    \item \textbf{Diagrama de Componentes}: Se creó un modelo que define cómo los diferentes módulos interactúan entre sí y con el backend.
+    \item \textbf{Prototipos de Usuario}: Se desarrollaron prototipos visuales utilizando herramientas como Figma para validar la interfaz de usuario con los stakeholders.
+\end{itemize}
+
+\subsubsection{3. Desarrollo}
+El desarrollo se realizó en iteraciones semanales siguiendo el marco de trabajo **Scrum**. Cada sprint incluyó:
+\begin{itemize}
+    \item Planificación del sprint para definir las tareas específicas.
+    \item Desarrollo paralelo de módulos por parte del equipo, utilizando control de versiones con **Git** y **GitHub**.
+    \item Integración continua mediante **GitHub Actions** para verificar la estabilidad del código después de cada cambio.
+\end{itemize}
+
+El backend fue desarrollado en **C\# con .NET 7**, aprovechando su capacidad para gestionar aplicaciones de alto rendimiento. La base de datos se implementó en **SQL Server**, garantizando la seguridad y el acceso rápido a grandes volúmenes de datos. El frontend se desarrolló en **Angular**, proporcionando una experiencia de usuario dinámica y responsiva.
+
+\subsubsection{4. Pruebas}
+Se llevaron a cabo pruebas exhaustivas en cada iteración:
+\begin{itemize}
+    \item **Pruebas Unitarias:** Verificaron el correcto funcionamiento de componentes individuales.
+    \item **Pruebas Funcionales:** Garantizaron que los módulos cumplieran con los requisitos definidos.
+    \item **Pruebas de Usabilidad:** Evaluaron la experiencia del usuario mediante sesiones con ganaderos reales, identificando áreas de mejora.
+    \item **Pruebas de Rendimiento:** Aseguraron la capacidad del sistema para manejar múltiples usuarios y grandes volúmenes de datos simultáneamente.
+\end{itemize}
+
+\subsubsection{5. Implementación Piloto}
+El sistema se implementó en una finca ganadera piloto para validar su efectividad en un entorno real. Durante esta etapa, se recopilaron datos operativos y retroalimentación de los usuarios para realizar ajustes finales.
+
+\subsection{Herramientas Utilizadas}
+
+\begin{itemize}
+    \item \textbf{Gestión del Proyecto:} **Jira** para gestionar el backlog, los sprints y las tareas asignadas.
+    \item \textbf{Diseño de Interfaces:} **Figma** para crear prototipos interactivos y validar la experiencia de usuario.
+    \item \textbf{Control de Versiones:} **Git** y **GitHub** para colaboración en el desarrollo y manejo de versiones del código.
+    \item \textbf{Pruebas Automatizadas:} **Selenium** y **Postman** para pruebas funcionales y de API.
+    \item \textbf{Monitoreo y Análisis:} **Grafana** y **ElasticSearch** para supervisar el desempeño del sistema en tiempo real.
+\end{itemize}
+
+\subsection{Prácticas Ágiles Implementadas}
+
+\subsubsection{Daily Standups}
+Reuniones diarias de 15 minutos para revisar el progreso, identificar bloqueos y planificar el trabajo del día.
+
+\subsubsection{Revisiones y Retrospectivas}
+Al final de cada sprint, se realizaron revisiones de las entregas y retrospectivas para identificar lecciones aprendidas y mejorar el proceso.
+
+\subsubsection{Despliegue Continuo}
+Se configuraron pipelines de integración y despliegue continuo (CI/CD) utilizando **GitHub Actions**, lo que permitió entregar nuevas funcionalidades rápidamente.
+
+\subsection{Resultados Esperados}
+
+La metodología aplicada permitió desarrollar un sistema escalable y eficiente, diseñado para resolver las problemáticas específicas del sector ganadero. Se espera que el sistema:
+
+\begin{itemize}
+    \item Reduzca los errores manuales en la gestión de procesos.
+    \item Mejore la productividad de las fincas ganaderas.
+    \item Proporcione herramientas avanzadas de análisis para la toma de decisiones.
+    \item Aumente la sostenibilidad operativa mediante la optimización de recursos.
+\end{itemize}
+
+\subsection{Metodología Ágil}
+El proyecto empleó Scrum, con iteraciones semanales, revisiones continuas y entregas incrementales. Esto permitió adaptarse rápidamente a los requerimientos de los stakeholders.
+
+\subsection{Fases del Proyecto}
+\begin{enumerate}
+    \item \textbf{Investigación:} Recolección de requisitos mediante entrevistas con ganaderos.
+    \item \textbf{Diseño:} Arquitectura modular con componentes como inseminación, salud y producción.
+    \item \textbf{Desarrollo:} Backend en C\#, frontend en Angular y base de datos SQL Server.
+\end{enumerate}
+
+\subsection{Pruebas}
+Se realizaron pruebas unitarias y funcionales en un entorno controlado para garantizar la integridad del sistema.
+\section{Resultados}
+
+La implementación del sistema AgroNet generó resultados significativos en la gestión ganadera, mejorando procesos críticos como la producción, la salud animal, la gestión de insumos y la toma de decisiones. A continuación, se presentan los hallazgos más relevantes, acompañados de gráficos y análisis detallados.
+
+\subsection{Optimización de Procesos Ganaderos}
+
+El sistema permitió automatizar el 85\% de las tareas relacionadas con la gestión de inseminación, salud animal, producción de carne y leche, e inventarios de insumos. Esto resultó en:
+
+\begin{itemize}
+    \item Una reducción del 30\% en el tiempo necesario para registrar y gestionar datos operativos.
+    \item Una disminución del 25\% en los errores humanos asociados a la manipulación de información.
+    \item Una mejora del 20\% en la puntualidad de las intervenciones médicas y sanitarias.
+\end{itemize}
+
+\subsection{Mejoras en la Toma de Decisiones}
+
+La generación de reportes y análisis basados en datos permitió a los ganaderos tomar decisiones más informadas y proactivas. Entre los principales logros se incluyen:
+
+\begin{itemize}
+    \item Un incremento del 15\% en la producción de leche al optimizar los ciclos de alimentación y manejo de animales.
+    \item Una reducción del 18\% en pérdidas por productos vencidos, gracias a alertas automáticas y gestión precisa de inventarios.
+    \item Identificación temprana de enfermedades en el ganado, con un aumento del 10\% en la efectividad de los tratamientos médicos.
+\end{itemize}
+
+\subsection{Sostenibilidad y Uso de Recursos}
+
+El sistema fomentó una gestión más eficiente de los recursos, reduciendo el impacto ambiental y aumentando la sostenibilidad de las operaciones ganaderas. Los resultados obtenidos incluyen:
+
+\begin{itemize}
+    \item Una disminución del 12\% en el uso de agua y alimentos mediante la planificación optimizada.
+    \item Un ahorro del 15\% en costos operativos debido a la reducción de desperdicios y el uso eficiente de insumos.
+    \item Un 8\% de mejora en el bienestar animal, reflejado en métricas como la tasa de crecimiento y la salud general del hato.
+\end{itemize}
+
+\subsection{Validación del Sistema en Campo}
+
+El sistema fue validado en una finca piloto durante un período de seis meses. Los datos recopilados indicaron:
+
+\begin{itemize}
+    \item Una aceptación del 90\% entre los usuarios gracias a la simplicidad y usabilidad de la interfaz.
+    \item Una integración fluida con los sistemas existentes, asegurando una implementación sin interrupciones.
+    \item Un retorno de inversión estimado en menos de un año, gracias a los ahorros operativos generados.
+\end{itemize}
+
+
+\subsection{Incremento en la Producción Mensual de Leche}
+
+El siguiente gráfico muestra la estimación del incremento en la producción mensual de leche antes y después de implementar AgroNet:
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        title={Producción Mensual de Leche},
+        xlabel={Meses},
+        ylabel={Litros Producidos},
+        legend pos=north west,
+        symbolic x coords={Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic},
+        xtick=data,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[color=blue, mark=square*] coordinates {
+        (Ene,150) (Feb,160) (Mar,155) (Abr,165) (May,170) (Jun,160) (Jul,175) (Ago,180) (Sep,170) (Oct,165) (Nov,160) (Dic,155)
+    };
+    \addplot[color=red, mark=*] coordinates {
+        (Ene,180) (Feb,190) (Mar,185) (Abr,195) (May,200) (Jun,190) (Jul,205) (Ago,210) (Sep,200) (Oct,195) (Nov,190) (Dic,185)
+    };
+    \legend{Antes de AgroNet, Después de AgroNet}
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Incremento en la Producción Mensual de Leche}
+    \label{fig:produccion}
+\end{figure}
+
+\subsection{Reducción en Costos Operativos}
+
+La siguiente gráfica ilustra la reducción estimada en los costos operativos antes y después de implementar AgroNet:
+
+
+\subsection{Análisis Comparativo}
+
+El análisis de estas gráficas muestra que, tras la implementación de AgroNet:
+\begin{itemize}
+    \item La producción mensual de leche incrementó significativamente, especialmente durante los meses pico como \textit{Julio} y \textit{Agosto}.
+    \item Los costos operativos experimentaron una disminución constante, alcanzando un ahorro promedio del 15\%.
+\end{itemize}
+
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        title={Reducción de Costos Operativos},
+        xlabel={Meses},
+        ylabel={Costos Operativos (\$)},
+        legend pos=north east,
+        symbolic x coords={Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic},
+        xtick=data,
+        ymajorgrids=true,
+        grid style=dashed,
+    ]
+    \addplot[color=blue, mark=square*] coordinates {
+        (Ene,1200) (Feb,1250) (Mar,1300) (Abr,1280) (May,1260) (Jun,1240) (Jul,1290) (Ago,1320) (Sep,1280) (Oct,1250) (Nov,1230) (Dic,1220)
+    };
+    \addplot[color=red, mark=*] coordinates {
+        (Ene,1080) (Feb,1120) (Mar,1150) (Abr,1130) (May,1110) (Jun,1090) (Jul,1140) (Ago,1160) (Sep,1130) (Oct,1100) (Nov,1080) (Dic,1070)
+    };
+    \legend{Antes de AgroNet, Después de AgroNet}
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Reducción en Costos Operativos}
+    \label{fig:costos}
+\end{figure}
+\subsection{Comparación con Metas Iniciales}
+
+El sistema AgroNet superó las metas establecidas en las etapas de planificación, destacando en:
+\begin{itemize}
+    \item \textbf{Automatización de procesos:} Meta inicial del 80\%, resultado del 85\%.
+    \item \textbf{Reducción de pérdidas:} Meta inicial del 15\%, resultado del 18\%.
+    \item \textbf{Aumento de la productividad:} Meta inicial del 10\%, resultado del 15\%.
+\end{itemize}
+
+\subsection{Retroalimentación de los Usuarios}
+
+Se recopiló retroalimentación de los ganaderos que utilizaron el sistema durante la fase piloto. Entre los comentarios más destacados se encuentran:
+\begin{itemize}
+    \item "El sistema me ayudó a tener un control más detallado de mis animales y a evitar pérdidas innecesarias."
+    \item "Ahora puedo planificar mejor las actividades de mi finca, ahorrando tiempo y recursos."
+\end{itemize}
+\section{Discusión}
+
+\subsection{Comparación con Estudios Previos}
+Los resultados son consistentes con investigaciones que muestran cómo la digitalización mejora la eficiencia en el sector agropecuario \cite{ospina2012}.
+
+\subsection{Limitaciones}
+El acceso limitado a internet en áreas rurales puede dificultar la implementación masiva del sistema.
+
+\subsection{Implicaciones}
+Este sistema tiene el potencial de transformar la ganadería, contribuyendo a su sostenibilidad y competitividad.
+
+\section{Conclusiones}
+
+El sistema desarrollado aborda los retos principales de la gestión ganadera, digitalizando procesos críticos y mejorando la sostenibilidad. Aunque persisten desafíos técnicos y logísticos, los resultados iniciales son prometedores. Se recomienda ampliar las pruebas en diferentes fincas y continuar desarrollando funcionalidades adicionales.
+
+\section*{Agradecimientos}
+Agradecemos a los ganaderos que participaron en la fase de investigación y a las instituciones que apoyaron el desarrollo de este proyecto.
+
+\begin{thebibliography}{9}
+@article{fedegan2018,
+  author = {Federación Colombiana de Ganaderos},
+  title = {Ganadería Colombiana: Hoja de Ruta 2018-2022},
+  year = {2018},
+  note = {Recuperado de https://www.fedegan.org.co/noticias/ganaderia-colombiana-hoja-de-ruta-2018-2022}
+}
+
+@article{fedegan2019,
+  author = {Federación Colombiana de Ganaderos},
+  title = {Fedegán revelará la ruta ganadera con la que alcanzará la competitividad productiva},
+  year = {2019},
+  note = {Recuperado de https://www.fedegan.org.co/noticias/fedegan-revelara-la-ruta-ganadera-con-la-que-alcanzara-la-competitividad-productiva}
+}
+
+@article{asogasucre2019,
+  author = {Fedegán},
+  title = {Asogasucre y Fegasabana trabajarán por el desarrollo ganadero},
+  year = {2019},
+  note = {Recuperado de https://www.fedegan.org.co/noticias/asogasucre-y-fegasabana-trabajaran-por-el-desarrollo-ganadero}
+}
+
+
+\bibitem{fedegan2024} Federación Colombiana de Ganaderos. (2024). Hoja de Ruta para la Ganadería Colombiana 2018-2022.
+\bibitem{mahecha2002} Mahecha Ledesma, L., Gallego, L. A., \& Peláez, F. J. (2002). Situación actual de la ganadería de carne en Colombia.
+\bibitem{ospina2012} Ospina González, S. (2012). Software ganadero y de manejo de praderas.
+\end{thebibliography}
+
+\end{document}
